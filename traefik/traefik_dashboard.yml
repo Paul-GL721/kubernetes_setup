@@ -1,0 +1,14 @@
+# dashboard.yaml
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefikdashboard
+spec:
+  entryPoints:
+    - traefik
+  routes:
+    - match: Host(`k8straefik.paulgobero.com`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+      kind: Rule
+      services:
+        - name: api@internal
+          kind: TraefikService
