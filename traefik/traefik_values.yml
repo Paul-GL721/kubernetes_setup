@@ -649,7 +649,7 @@ ports:
     # The port protocol (TCP/UDP)
     protocol: TCP
     # -- See [upstream documentation](https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport)
-    nodePort:  # @schema type:[integer, null]; minimum:0
+    nodePort: 32080  # @schema type:[integer, null]; minimum:0
     redirections:
       # -- Port Redirections
       # Added in 2.2, one can make permanent redirects via entrypoints.
@@ -690,7 +690,7 @@ ports:
     ## -- The port protocol (TCP/UDP)
     protocol: TCP
     # -- See [upstream documentation](https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport)
-    nodePort:  # @schema type:[integer, null]; minimum:0
+    nodePort: 32443 # @schema type:[integer, null]; minimum:0
     # -- See [upstream documentation](https://kubernetes.io/docs/concepts/services-networking/service/#application-protocol)
     appProtocol:  # @schema type:[string, null]
     # -- See [upstream documentation](https://doc.traefik.io/traefik/routing/entrypoints/#allowacmebypass)
@@ -764,7 +764,8 @@ service:
   ## -- Single service is using `MixedProtocolLBService` feature gate.
   ## -- When set to false, it will create two Service, one for TCP and one for UDP.
   single: true
-  type: LoadBalancer
+  type: NodePort
+  #type: LoadBalancer
   # -- Additional annotations applied to both TCP and UDP services (e.g. for cloud provider specific config)
   annotations: {}
   # -- Additional annotations for TCP service only
@@ -884,6 +885,7 @@ affinity: {}
 
 # -- nodeSelector is the simplest recommended form of node selection constraint.
 nodeSelector: {}
+
 # -- Tolerations allow the scheduler to schedule pods with matching taints.
 tolerations: []
 # -- You can use topology spread constraints to control
