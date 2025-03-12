@@ -5,9 +5,9 @@ metadata:
 
 spec:
   ports:
-    - name: web
+    - name: whoamiweb
       port: 80
-      targetPort: web
+      targetPort: whoamidepweb
 
   selector:
     app: whoami
