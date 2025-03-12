@@ -5,7 +5,7 @@ metadata:
   name: traefikdashboard
 spec:
   entryPoints:
-    - traefik
+    - web
   routes:
     - match: Host(`k8straefik.paulgobero.com`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
       kind: Rule
