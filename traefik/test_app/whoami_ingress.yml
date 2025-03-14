@@ -5,10 +5,14 @@ metadata:
 spec:
   entryPoints:
     - web
+    - websecure
   routes:
     - match: Host(`testk8app.paulgobero.com`) 
       kind: Rule
       services:
         - name: whoami
           kind: Service
-          port: 80
+          port: whoamihttp
+  tls:
+    certResolver: letsencrypt-staging01
+    secretName: testapp-staging-cert-com-tls
