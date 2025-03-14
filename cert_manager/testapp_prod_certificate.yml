@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: testapp-prod-cert
+  namespace: testapp
+
+spec:
+  secretName: testapp-prod-cert-com-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  dnsNames:
+    - testk8app.paulgobero.com

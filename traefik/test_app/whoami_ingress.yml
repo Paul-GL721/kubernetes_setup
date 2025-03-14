@@ -2,6 +2,8 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: whoami-ingress
+  namespace: testapp
+
 spec:
   entryPoints:
     - web
@@ -14,5 +16,5 @@ spec:
           kind: Service
           port: whoamihttp
   tls:
-    certResolver: letsencrypt-staging01
-    secretName: testapp-staging-cert-com-tls
+    certResolver: letsencrypt-production
+    secretName: testapp-prod-cert-com-tls
